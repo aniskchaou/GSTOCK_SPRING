@@ -4,44 +4,81 @@
 	layout:decorator="layout" layout:decorate="~{Layout}">
 <head>
 <meta charset="utf-8">
-<title>Produits</title>
+<title>GStock</title>
 <link rel="stylesheet" type="text/css"
 	th:href="@{css/bootstrap.min.css}" />
 </head>
 <body>
-	<div layout:fragment="content">
-		<ul>
-			<li><a th:href="@{/add}">add Produit</a>
-			<li><a th:href="@{/index}">Produits</a></li>
-		</ul>
-		<h3>Produits</h3>
-		<div class="container">
-			<form th:action="@{chercher}" method="get">
-				<label>mot clé</label> <input type="text" name="mc" />
-				<button class="btn btn-primary">Search</button>
-			</form>
+
+	<!-- menu -->
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" href="#">GStock</a>
+
+		<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+				<li class="nav-item active"><a class="nav-link" th:href="@{/}">Liste
+						des produits</a></li>
+				<li class="nav-item active">
+			<a class="nav-link" th:href="@{/add}">Ajouter un produit</a>
+				</li></ul>
 		</div>
-		<table class="table">
-			<thead>
-				<tr>
-					<td>ID</td>
-					<td>designation</td>
-					<td>Prix</td>
-					<td>Qte</td>
-					<td>Action</td>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="p:${listProduits}">
-					<td th:text="${p.id}"></td>
-					<td th:text="${p.designation}"></td>
-					<td th:text="${p.prix}"></td>
-					<td th:text="${p.qte}"></td>
-					<td><a onclick="return confirm('Etes vous sure ?')"
-						th:href="@{delete(id=${p.id})}">Delete</a></td>
-				</tr>
-			</tbody>
-		</table>
+	</nav>
+
+	<div layout:fragment="content">
+		<br> <br>
+		<div class="container">
+			<!-- rechercher  -->
+			<div class="card">
+				<div class="card-header">Rechercher un produit</div>
+				<div class="card-body">
+					<form th:action="@{chercher}" method="get">
+
+						<div class="form-group">
+							<label for="exampleInputEmail1">Mot clé </label> <input
+								type="text" class="form-control" name="mc"
+								placeholder="Enter le mot clé">
+						</div>
+
+						<button class="btn btn-primary">Rechercher</button>
+					</form>
+				</div>
+			</div>
+			<br> <br>
+			<!-- lite des produits -->
+			<div class="card">
+				<div class="card-header">Liste des produits</div>
+				<div class="card-body">
+					<table class="table table-bordered table-hover">
+						<thead>
+							<tr>
+								<th scope="col">#
+								</td>
+								<th scope="col">Désignation
+								</td>
+								<th scope="col">Prix
+								</td>
+								<th scope="col">Quantité
+								</td>
+								<th scope="col">Action
+								</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="p:${listProduits}">
+								<td th:text="${p.id}"></td>
+								<td th:text="${p.designation}"></td>
+								<td th:text="${p.prix}"></td>
+								<td th:text="${p.qte}"></td>
+								<td><a class="btn btn-danger"
+									onclick="return confirm('Etes vous sure ?')"
+									th:href="@{delete(id=${p.id})}">Supprimer</a></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
 	</div>
+
 </body>
 </html>

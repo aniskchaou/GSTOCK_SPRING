@@ -1,26 +1,70 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" 
-xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-layout:decorator="layout">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout">
 <head>
 <meta charset="utf-8">
-<title>Produits</title>
-<link rel="stylesheet" type="text/css" th:href="@{css/bootstrap.min.css}" />
+<title>Ajouter un produit</title>
+<link rel="stylesheet" type="text/css"
+	th:href="@{css/bootstrap.min.css}" />
 </head>
 <body>
-<div layout:fragment="content">
-<ul><li> <a th:href="@{/add}">add Produit</a>
-<li> <a th:href="@{/index}">Produits</a></li></ul>
-<h3>Add P</h3>
-<form th:action="@{save}" method="post">
-<label>Désignation</label>
-<input type="text" name="designation"  th:value="${produit.id}"/>
-<label>Prix</label>
-<input type="text" name="prix" th:value="${produit.prix}"/>
-<label>Quantité</label>
-<input type="text" name="qte" th:value="${produit.qte}"/>
-<button class="btn btn-primary">Add</button>
-</form>
-</div>
+
+	<!-- menu -->
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" href="#">GStock</a>
+		<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+				<li class="nav-item active"><a class="nav-link" th:href="@{/}">Listedes
+						produits</a></li>
+				<li class="nav-item active"><a class="nav-link"
+					th:href="@{/add}">Ajouter un produit</a></li>
+			</ul>
+		</div>
+	</nav>
+	<br>
+	<br>
+	<div layout:fragment="content">
+		<br> <br>
+		<div class="container">
+
+			<div class="card">
+				<div class="card-header">Ajouter un produit</div>
+				<div class="card-body">
+
+
+					<form th:action="@{save}" method="post">
+
+
+						<!--  designation  -->
+						<div class="form-group">
+							<label for="exampleInputEmail1">Désignation : </label> <input
+								class="form-control" type="text" name="designation"
+								th:value="${produit.id}" placeholder="Désignation">
+						</div>
+
+
+						<!-- prix -->
+						<div class="form-group">
+							<label for="exampleInputEmail1">Prix : </label> <input
+								class="form-control" type="text" name="prix"
+								th:value="${produit.prix}" placeholder="Prix">
+						</div>
+
+						<!-- quantité -->
+
+						<div class="form-group">
+							<label for="exampleInputEmail1">Quantité : </label> <input
+								class="form-control" type="text" name="qte"
+								th:value="${produit.qte}" placeholder="Quantité">
+						</div>
+
+						<button class="btn btn-primary">Ajouter</button>
+					</form>
+
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

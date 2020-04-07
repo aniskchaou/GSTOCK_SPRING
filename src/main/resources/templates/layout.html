@@ -1,17 +1,14 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" 
-xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
 <meta charset="utf-8">
-<title>Gestion de produits</title>
-<link rel="stylesheet" type="text/css" th:href="@{css/bootstrap.min.css}" />
+<title>GStock</title>
+<link rel="stylesheet" type="text/css"
+	th:href="@{css/bootstrap.min.css}" />
 </head>
 <body>
-<header>
-<ul><li> <a th:href="@{/add}">add Produit</a>
-<li> <a th:href="@{/index}">Produits</a></li></ul>
-</header>
-<section layout:fragment="content"></section>
-<footer></footer>
+	<section layout:fragment="content"></section>
+	<footer></footer>
 </body>
 </html>

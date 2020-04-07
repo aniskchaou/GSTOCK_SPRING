@@ -3,16 +3,17 @@ package com.example.demo.entities;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+
 @Entity
 public class Produit {
-   @Id  @GeneratedValue
+	@Id
+	@GeneratedValue
 	private Long id;
 	private String designation;
 	private double prix;
 	private int qte;
-	
+
 	public Produit() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public Produit(String designation, double prix, int qte) {
@@ -53,7 +54,5 @@ public class Produit {
 	public void setQte(int qte) {
 		this.qte = qte;
 	}
-	
-	
-	
+
 }
