@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout" layout:decorate="~{Layout}">
+<head>
+<meta charset="utf-8">
+<title>Produits</title>
+<link rel="stylesheet" type="text/css"
+	th:href="@{css/bootstrap.min.css}" />
+</head>
+<body>
+	<div layout:fragment="content">
+		<ul>
+			<li><a th:href="@{/add}">add Produit</a>
+			<li><a th:href="@{/index}">Produits</a></li>
+		</ul>
+		<h3>Produits</h3>
+		<div class="container">
+			<form th:action="@{chercher}" method="get">
+				<label>mot clé</label> <input type="text" name="mc" />
+				<button class="btn btn-primary">Search</button>
+			</form>
+		</div>
+		<table class="table">
+			<thead>
+				<tr>
+					<td>ID</td>
+					<td>designation</td>
+					<td>Prix</td>
+					<td>Qte</td>
+					<td>Action</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="p:${listProduits}">
+					<td th:text="${p.id}"></td>
+					<td th:text="${p.designation}"></td>
+					<td th:text="${p.prix}"></td>
+					<td th:text="${p.qte}"></td>
+					<td><a onclick="return confirm('Etes vous sure ?')"
+						th:href="@{delete(id=${p.id})}">Delete</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
